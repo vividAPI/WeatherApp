@@ -21,9 +21,9 @@ do
 
         string foo = await client.GetStringAsync(url);
 
-        WeatherModel.Root jsonString = JsonSerializer.Deserialize<WeatherModel.Root>(foo);
+        WeatherModel.Root? jsonString = JsonSerializer.Deserialize<WeatherModel.Root>(foo);
 
-        Console.WriteLine($"The weather in {city} feels like {jsonString.main.feels_like} degrees F");
+        Console.WriteLine($"The weather in {city} feels like {jsonString.main.feels_like} degrees F and the Latitude is {jsonString.coord.lat} and the Logitude is {jsonString.coord.lon}");
         Console.Write("Would you like to see another city? Y/N: ");
         string? response = Console.ReadLine();
         if (response.ToLower() == "y")
